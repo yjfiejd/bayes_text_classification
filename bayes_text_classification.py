@@ -226,3 +226,22 @@ def testingNB():
 
 testingNB()
 
+#准备数据：文档词袋模型
+def bagOfWords2VecMN(vocabList, inputSet):
+    """
+    词袋到向量的转换
+
+    vocabList：词袋
+    inputSet：某个文档
+
+    returnVec：文档向量
+    """
+    #创建一个所含元素都为0的向量
+    returnVec = [0]*len(vocabList)
+    #将新词集合添加到创建的集合中
+    for word in inputSet:
+        #如果文档中的单词在词汇表中，则相应向量位置加1
+        if word in vocabList:
+            returnVec[vocabList.index(word)] += 1
+    #返回一个包含所有文档中出现的词的列表
+    return returnVec
